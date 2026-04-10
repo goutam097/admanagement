@@ -2,7 +2,6 @@ import { getAuthUrl } from "./apiConstants/authConstants";
 
 export const getApiHeaders = () => {
   const token = localStorage.getItem("accessToken") || null;
-  console.log(token)
 
   return {
     headers: {

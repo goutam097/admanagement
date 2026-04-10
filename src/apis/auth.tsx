@@ -1,11 +1,11 @@
 ﻿import { getURL } from "../utils/apiConstants";
-import { _post } from "../utils/axiosInstance";
+import { _getC, _postC } from "../utils/axiosInstance";
 
 export const login = async (
     formData: { email: string; password: string }
 ): Promise<any> => {
     try {
-        const response = await _post(getURL("AUTH.LOGIN"), formData, false);
+        const response = await _postC(getURL("AUTH.LOGIN"), formData, false);
 
         if (!response || (typeof response === "object" && "err" in response)) {
             const errMsg = response?.err || "Login failed";
@@ -15,19 +15,43 @@ export const login = async (
         const data = response.data;
 
         if (data?.code === 200) {
-            localStorage.setItem(
-                "accessToken",
-                data?.data?.tokens?.accessToken
-            );
-            localStorage.setItem(
-                "refreshToken",
-                data?.data?.tokens?.refreshToken
-            );
-            return data;
+            const accessToken = data?.data?.tokens?.accessToken;
+            const refreshToken = data?.data?.tokens?.refreshToken;
+
+            if (accessToken) {
+                localStorage.setItem("accessToken", accessToken);
+            }
+
+            if (refreshToken) {
+                localStorage.setItem("refreshToken", refreshToken);
+            }
+
+            return data?.data ?? {};
         }
 
         throw new Error(data?.message || "Login Failed");
     } catch (err: any) {
         throw err?.message || "Login Failed";
+    }
+};
+
+export const myProfileDetails = async (): Promise<any> => {
+    try {
+        const response = await _getC(getURL("AUTH.DETAILS"), true);
+
+        if (!response || (typeof response === "object" && "err" in response)) {
+            const errMsg = response?.err || "Failed to load profile";
+            throw new Error(errMsg);
+        }
+
+        const data = response.data;
+
+        if (data?.code === 200) {
+            return data.data;
+        }
+
+        throw new Error(data?.message || "Failed to load profile");
+    } catch (err: any) {
+        throw err?.message || "Failed to load profile";
     }
 };

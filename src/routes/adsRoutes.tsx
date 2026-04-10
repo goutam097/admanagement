@@ -16,49 +16,15 @@ const AdsRoutes = () => {
       <Route path="/login" element={<Login />} />
 
       {/* Protected Routes */}
-      <Route
-        path="/"
-        element={
-          <PrivateRoute>
-            <MainLayout>
-              <Dashboard />
-            </MainLayout>
-          </PrivateRoute>
-        }
-      />
 
-      <Route
-        path="/wallet"
-        element={
-          <PrivateRoute>
-            <MainLayout>
-              <WalletAndBilling />
-            </MainLayout>
-          </PrivateRoute>
-        }
-      />
-
-      <Route
-        path="/createAd"
-        element={
-          <PrivateRoute>
-            <MainLayout>
-              <AdCenter />
-            </MainLayout>
-          </PrivateRoute>
-        }
-      />
-
-      <Route
-        path="/advertise"
-        element={
-          <PrivateRoute>
-            <MainLayout>
-              <Advertise />
-            </MainLayout>
-          </PrivateRoute>
-        }
-      />
+      <Route element={<PrivateRoute />} >
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<Dashboard />} />
+          <Route path="wallet" element={<WalletAndBilling />} />
+          <Route path="createAd" element={<AdCenter />} />
+          <Route path="advertise" element={<Advertise />} />
+        </Route>
+      </Route>
 
     </Routes>
   );

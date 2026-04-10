@@ -1,8 +1,8 @@
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import Header from "./header/Header";
 
 
-const MainLayout = ({ children }: { children: any }) => {
+const MainLayout = () => {
     const navigate = useNavigate()
     return (
         <div style={{ display: "flex", height: "100vh" }}>
@@ -25,7 +25,7 @@ const MainLayout = ({ children }: { children: any }) => {
 
                 {/* Page Content */}
                 <main style={{ padding: "20px" }}>
-                    {children}
+                    <Outlet />
                 </main>
 
             </div>
