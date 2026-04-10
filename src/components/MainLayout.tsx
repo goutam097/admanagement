@@ -1,12 +1,11 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import Header from "./header/Header";
 import "../assets/style.scss";
-import user from "../assets/images/owner.png"
 import LeftSideBar from "./leftsidebar/LeftSideBar";
 
 
 const MainLayout = () => {
-    const navigate = useNavigate()
+    
     return (
         <>
             <div className="flex h-screen overflow-hidden">
