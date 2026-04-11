@@ -7,6 +7,7 @@ import Advertise from "../pages/advertise/Advertise";
 
 import PrivateRoute from "./PrivateRoute";
 import MainLayout from "../components/MainLayout";
+import { PaymentHistory } from "../pages/paymentHistory/PaymentHistory";
 
 const AdsRoutes = () => {
   return (
@@ -23,6 +24,8 @@ const AdsRoutes = () => {
           <Route path="wallet" element={<WalletAndBilling />} />
           <Route path="createAd" element={<AdCenter />} />
           <Route path="advertise" element={<Advertise />} />
+          <Route path="payment-history" element={<PaymentHistory />} />
+
         </Route>
       </Route>
 
