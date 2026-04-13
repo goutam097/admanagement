@@ -55,3 +55,29 @@ export const myProfileDetails = async (): Promise<any> => {
         throw err?.message || "Failed to load profile";
     }
 };
+
+export const ProfileTypeApi = async (
+    data: { profile_type: string }
+): Promise<any> => {
+    try {
+        const response = await _postC(
+            getURL("AUTH.MEMBERSHIP"),
+            data,
+            true
+        );
+        console.log(response,'11111111111111')
+        if (!response || (typeof response === "object" && "err" in response)) {
+            throw new Error(response?.err || "Failed to load profile");
+        }
+
+        const resData = response.data;
+
+        if (resData?.code === 200) {
+            return resData.data;
+        }
+
+        throw new Error(resData?.message || "Failed to load profile");
+    } catch (err: any) {
+        throw err?.message || "Failed to load profile";
+    }
+};

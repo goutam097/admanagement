@@ -1,6 +1,14 @@
+import { useState } from "react"
 import user from "../../assets/images/owner.jpg"
+import Audience from "../../components/audience/Audience"
+import Duration from "../../components/duration/Duration"
+import Placement from "../../components/placement/Placement"
 
 const AdCenter = () => {
+    const [audienceData, setAudienceData] = useState<any>({});
+    const [durationData, setDurationData] = useState<any>({});
+
+    
     return (
         <>
             <div className="grid grid-cols-12 gap-4 md:gap-6">
@@ -10,30 +18,34 @@ const AdCenter = () => {
                         <div className="px-6 py-5"><h3 className="text-base font-medium text-gray-800 dark:text-white/90">Ad Creative</h3></div>
                         <div className="p-4 border-t border-gray-100 dark:border-gray-800 sm:p-6">
                             <div className="mb-3">
-                                <div><label for="" className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">How do you want your ad to look?
-                                </label>
+                                <div>
+                                    <label className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">How do you want your ad to look?
+                                    </label>
                                     <div className="relative">
                                         <input id="" className=" h-11 w-full rounded-lg border appearance-none px-4 py-2.5 text-sm shadow-theme-xs placeholder:text-gray-400 focus:outline-hidden focus:ring-3  dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30  bg-transparent text-gray-800 border-gray-300 focus:border-brand-300 focus:ring-brand-500/20 dark:border-gray-700 dark:text-white/90  dark:focus:border-brand-800" type="text" /></div></div>
                             </div>
 
                             <div className="mb-3">
-                                <div><label for="" className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">Headline
-                                </label>
+                                <div>
+                                    <label className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">Headline
+                                    </label>
                                     <div className="relative">
                                         <input id="" className=" h-11 w-full rounded-lg border appearance-none px-4 py-2.5 text-sm shadow-theme-xs placeholder:text-gray-400 focus:outline-hidden focus:ring-3  dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30  bg-transparent text-gray-800 border-gray-300 focus:border-brand-300 focus:ring-brand-500/20 dark:border-gray-700 dark:text-white/90  dark:focus:border-brand-800" type="text" /></div></div>
                             </div>
 
                             <div className="mb-3">
-                                <div><label for="" className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">Description
-                                </label>
+                                <div>
+                                    <label className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">Description
+                                    </label>
                                     <div className="relative">
                                         <textarea placeholder="Enter your message" rows="3" className="w-full rounded-lg border px-4 py-2.5 text-sm shadow-theme-xs focus:outline-hidden   bg-transparent text-gray-900 dark:text-gray-300 text-gray-900 border-gray-300 focus:border-brand-300 focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:focus:border-brand-800"></textarea>
                                     </div>
                                 </div>
                             </div>
                             <div className="mb-3">
-                                <div><label for="" className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">Ad Format <span>*</span>
-                                </label>
+                                <div>
+                                    <label className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">Ad Format <span>*</span>
+                                    </label>
                                     <div className="relative">
                                         <input id="" className=" h-11 w-full rounded-lg border appearance-none px-4 py-2.5 text-sm shadow-theme-xs placeholder:text-gray-400 focus:outline-hidden focus:ring-3  dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30  bg-transparent text-gray-800 border-gray-300 focus:border-brand-300 focus:ring-brand-500/20 dark:border-gray-700 dark:text-white/90  dark:focus:border-brand-800" type="text" /></div></div>
                             </div>
@@ -56,11 +68,11 @@ const AdCenter = () => {
                                 </div>
                             </div>
                             <div className="mb-3">
-                                <div><label for="" className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">Button <span>*</span>
+                                <div><label className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">Button <span>*</span>
                                 </label>
                                     <div className="relative">
                                         <select className="h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 pr-11 text-sm shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800 text-gray-400 dark:text-gray-400 dark:bg-dark-900">
-                                            <option value="" disabled="" className="text-gray-700 dark:bg-gray-900 dark:text-gray-400">Select Option</option>
+                                            <option value="" className="text-gray-700 dark:bg-gray-900 dark:text-gray-400">Select Option</option>
                                             <option value="marketing" className="text-gray-700 dark:bg-gray-900 dark:text-gray-400">Marketing</option>
                                             <option value="template" className="text-gray-700 dark:bg-gray-900 dark:text-gray-400">Template</option>
                                             <option value="development" className="text-gray-700 dark:bg-gray-900 dark:text-gray-400">Development</option>
@@ -71,7 +83,7 @@ const AdCenter = () => {
                             </div>
 
                             <div className="mb-3">
-                                <div><label for="" className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">Website URL
+                                <div><label className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">Website URL
                                 </label>
                                     <div className="relative">
                                         <input id="" className=" h-11 w-full rounded-lg border appearance-none px-4 py-2.5 text-sm shadow-theme-xs placeholder:text-gray-400 focus:outline-hidden focus:ring-3  dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30  bg-transparent text-gray-800 border-gray-300 focus:border-brand-300 focus:ring-brand-500/20 dark:border-gray-700 dark:text-white/90  dark:focus:border-brand-800" type="text" /></div></div>
@@ -81,132 +93,12 @@ const AdCenter = () => {
 
                     </div>
                     <div className="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03] mb-4">
-                        <div className="px-6 py-5"><h3 className="text-base font-medium text-gray-800 dark:text-white/90">Audience</h3>
-                            <p className="text-sm text-gray-500 dark:text-gray-400">Who should see your ad?</p>
-                        </div>
-                        <div className="p-4 border-t border-gray-100 dark:border-gray-800 sm:p-6">
-                            <div className="mb-3">
-                                <div><label for="" className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">Location
-                                </label>
-                                    <div className="relative">
-                                        <input id="" className=" h-11 w-full rounded-lg border appearance-none px-4 py-2.5 text-sm shadow-theme-xs placeholder:text-gray-400 focus:outline-hidden focus:ring-3  dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30  bg-transparent text-gray-800 border-gray-300 focus:border-brand-300 focus:ring-brand-500/20 dark:border-gray-700 dark:text-white/90  dark:focus:border-brand-800" type="text" /></div></div>
-                            </div>
-
-                            <div className="grid grid-flow-col gap-4">
-                                <div className="mb-3">
-                                    <div><label for="" className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">Age <span>*</span>
-                                    </label>
-                                        <div className="relative">
-                                            <select className="h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 pr-11 text-sm shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800 text-gray-400 dark:text-gray-400 dark:bg-dark-900">
-                                                <option value="" disabled="" className="text-gray-700 dark:bg-gray-900 dark:text-gray-400">Age</option>
-                                                <option value="marketing" className="text-gray-700 dark:bg-gray-900 dark:text-gray-400">Age</option>
-                                                <option value="template" className="text-gray-700 dark:bg-gray-900 dark:text-gray-400">Age</option>
-                                                <option value="development" className="text-gray-700 dark:bg-gray-900 dark:text-gray-400">Development</option>
-                                            </select>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="mb-3">
-                                    <div><label for="" className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">Age <span>*</span>
-                                    </label>
-                                        <div className="relative">
-                                            <select className="h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 pr-11 text-sm shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800 text-gray-400 dark:text-gray-400 dark:bg-dark-900">
-                                                <option value="" disabled="" className="text-gray-700 dark:bg-gray-900 dark:text-gray-400">Age</option>
-                                                <option value="marketing" className="text-gray-700 dark:bg-gray-900 dark:text-gray-400">Age</option>
-                                                <option value="template" className="text-gray-700 dark:bg-gray-900 dark:text-gray-400">Age</option>
-                                                <option value="development" className="text-gray-700 dark:bg-gray-900 dark:text-gray-400">Development</option>
-                                            </select>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="mb-3">
-                                <div><label for="" className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">Gender
-                                </label>
-                                    <div className="flex flex-wrap items-center gap-8">
-                                        <label for="radio1" className="relative flex cursor-pointer  select-none items-center gap-3 text-sm font-medium text-gray-700 dark:text-gray-400 ">
-                                            <input id="radio1" className="" type="radio" />All</label>
-                                        <label for="radio2"
-                                            className="relative flex cursor-pointer  select-none items-center gap-3 text-sm font-medium text-gray-700 dark:text-gray-400 ">
-                                            <input id="radio2" className="" type="radio" />
-
-                                            Men</label>
-                                        <label for="radio3" className="relative flex cursor-pointer  select-none items-center gap-3 text-sm font-medium text-gray-700 dark:text-gray-400 ">
-                                            <input id="radio3" className="" type="radio" value="option3" name="group1" />Women</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="mb-3">
-                                <div><label for="" className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">Membership Type
-                                </label>
-                                    <div className="relative">
-                                        <select className="h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 pr-11 text-sm shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800 text-gray-400 dark:text-gray-400 dark:bg-dark-900">
-                                            <option value="" disabled="" className="text-gray-700 dark:bg-gray-900 dark:text-gray-400">Select Option</option>
-                                            <option value="marketing" className="text-gray-700 dark:bg-gray-900 dark:text-gray-400">Marketing</option>
-                                            <option value="template" className="text-gray-700 dark:bg-gray-900 dark:text-gray-400">Template</option>
-                                            <option value="development" className="text-gray-700 dark:bg-gray-900 dark:text-gray-400">Development</option>
-                                        </select>
-
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
-
-
-                        </div>
+                        <Audience onChange={setAudienceData} />
 
                     </div>
 
                     <div className="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03] mb-4">
-                        <div className="px-6 py-5"><h3 className="text-base font-medium text-gray-800 dark:text-white/90">Duration</h3>
-                            <p className="text-sm text-gray-500 dark:text-gray-400">Who should see your ad?</p>
-                        </div>
-                        <div className="p-4 border-t border-gray-100 dark:border-gray-800 sm:p-6">
-
-
-
-
-                            <div className="mb-3">
-
-                                <div className="items-center mb-3">
-                                    <label for="radio1" className="relative flex cursor-pointer  select-none items-center gap-3 text-sm font-medium text-gray-700 dark:text-gray-400 ">
-                                        <input id="radio1" className="" type="radio" /></label>
-                                    <h4>Run this ad continuously</h4>
-                                    <small>Your add will continue to run on a daily budged unless you pause it, which you can do at any time</small>
-                                </div>
-                                <div className="items-center mb-3">
-                                    <label for="radio3" className="relative flex cursor-pointer  select-none items-center gap-3 text-sm font-medium text-gray-700 dark:text-gray-400 ">
-                                        <input id="radio3" className="" type="radio" value="option3" name="group1" /></label>
-                                    <h4>Run this ad between specific dates</h4>
-                                    <small>Your add will continue to run on a daily budged unless you pause it, which you can do at any time</small>
-                                </div>
-
-
-                            </div>
-
-                            <div className="mb-3">
-                                <h3 className="text-base font-medium text-gray-800 dark:text-white/90">Daily budget</h3>
-
-                                <div className="rounded-2xl border border-gray-100 bg-gray-50 px-6 py-6 dark:border-gray-800 dark:bg-white/[0.03] xl:py-[27px]">
-                                    <h2 className="text-center">$ 67.00 USD</h2>
-                                </div>
-
-                                <input type="range" min="1" max="100" value="50" class="slider" id="myRange" />
-                            </div>
-
-
-
-
-
-
-                        </div>
+                        <Duration onChange={setDurationData} />
 
                     </div>
 
@@ -216,65 +108,7 @@ const AdCenter = () => {
                         </div>
                         <div className="p-4 border-t border-gray-100 dark:border-gray-800 sm:p-6">
 
-                            <p>Choose where you want to show your ad.The more placements you select, the more opportunities you'll have to reach your target audience</p>
-
-
-                            <div className="mb-3">
-                                <div className="rounded-2xl border border-gray-100 bg-gray-50 px-6 py-6 dark:border-gray-100 ">
-                                    <label for="check1" className="relative flex cursor-pointer  select-none items-center gap-3 text-sm font-medium text-gray-700 dark:text-gray-400 ">
-                                        <input id="check1" className="" type="checkbox" />General wall</label>
-                                    <div>
-
-                                        <small>Show your ad on general wall placement</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="mb-3">
-                                <div className="rounded-2xl border border-gray-100 bg-gray-50 px-6 py-6 dark:border-gray-100 ">
-                                    <label for="check2" className="relative flex cursor-pointer  select-none items-center gap-3 text-sm font-medium text-gray-700 dark:text-gray-400 ">
-                                        <input id="check2" className="" type="checkbox" />Fan wall</label>
-                                    <div>
-
-                                        <small>Show your ad on general wall placement</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="mb-3">
-                                <div className="rounded-2xl border border-gray-100 bg-gray-50 px-6 py-6 dark:border-gray-100 ">
-                                    <label for="check3" className="relative flex cursor-pointer  select-none items-center gap-3 text-sm font-medium text-gray-700 dark:text-gray-400 ">
-                                        <input id="check3" className="" type="checkbox" />Favourite wall</label>
-                                    <div>
-                                        <small>Show your ad on general wall placement</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="mb-3">
-                                <div className="rounded-2xl border border-gray-100 bg-gray-50 px-6 py-6 dark:border-gray-100 ">
-                                    <label for="check4" className="relative flex cursor-pointer  select-none items-center gap-3 text-sm font-medium text-gray-700 dark:text-gray-400 ">
-                                        <input id="check4" className="" type="checkbox" />Prayer wall</label>
-                                    <div>
-                                        <small>Show your ad on general wall placement</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="mb-3">
-                                <div className="rounded-2xl border border-gray-100 bg-gray-50 px-6 py-6 dark:border-gray-100 ">
-                                    <label for="check5" className="relative flex cursor-pointer  select-none items-center gap-3 text-sm font-medium text-gray-700 dark:text-gray-400 ">
-                                        <input id="check5" className="" type="checkbox" />Physical wall</label>
-                                    <div>
-                                        <small>Show your ad on general wall placement</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="mb-3">
-                                <div className="rounded-2xl border border-gray-100 bg-gray-50 px-6 py-6 dark:border-gray-100 ">
-                                    <label for="check6" className="relative flex cursor-pointer  select-none items-center gap-3 text-sm font-medium text-gray-700 dark:text-gray-400 ">
-                                        <input id="check6" className="" type="checkbox" />Virtual church wall</label>
-                                    <div>
-                                        <small>Show your ad on general wall placement</small>
-                                    </div>
-                                </div>
-                            </div>
+                            <Placement />
 
                             <div className="col-span-full"><button className="inline-flex items-center justify-center gap-2 rounded-lg transition px-4 py-3 text-sm bg-brand-500 text-white shadow-theme-xs hover:bg-brand-600 disabled:bg-brand-300">Create ad</button></div>
 
@@ -298,7 +132,7 @@ const AdCenter = () => {
                                 </div>
                             </div>
                             <div className="mt-6 previewImage">
-                               <img alt="user" src={user} />
+                                <img alt="user" src={user} />
                             </div>
                         </div>
                     </div>
@@ -307,7 +141,7 @@ const AdCenter = () => {
                             <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">Estimated daily results</h3>
                             <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">Estimated impressions</p>
                             <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">3.0K-5.2K</h3>
-                            
+
                         </div>
                     </div>
                     <div className="rounded-2xl border border-gray-200 bg-gray-100 dark:border-gray-800 dark:bg-white/[0.03] mb-6">
@@ -324,7 +158,7 @@ const AdCenter = () => {
                                 <span className="font-bold">Total Budget</span>
                                 <span className="font-bold text-gray-800 text-theme-xl">$67.00 USD</span>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
