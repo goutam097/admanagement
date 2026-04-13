@@ -65,7 +65,6 @@ export const ProfileTypeApi = async (
             data,
             true
         );
-        console.log(response,'11111111111111')
         if (!response || (typeof response === "object" && "err" in response)) {
             throw new Error(response?.err || "Failed to load profile");
         }

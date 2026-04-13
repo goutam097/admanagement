@@ -42,7 +42,6 @@ const Audience = ({ onChange }: AudienceProps) => {
     const [endAge, setEndAge] = useState<number | "">("");
     const ages = Array.from({ length: 68 }, (_, i) => i + 13);
     const [gender, setGender] = useState("all");
-    console.log(gender,'gender')
     const [selectedType, setSelectedType] = useState<string>("");
     const [membershipTypeList, setMembershipTypeList] = useState<
         MembershipType[]
