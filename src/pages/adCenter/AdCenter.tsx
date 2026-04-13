@@ -3,6 +3,7 @@ import user from "../../assets/images/owner.jpg"
 import Audience from "../../components/audience/Audience"
 import Duration from "../../components/duration/Duration"
 import Placement from "../../components/placement/Placement"
+import AdCreative from "../../components/adCreative/AdCreative"
 
 const AdCenter = () => {
     const [audienceData, setAudienceData] = useState<any>({});
@@ -13,8 +14,8 @@ const AdCenter = () => {
         <>
             <div className="grid grid-cols-12 gap-4 md:gap-6">
                 <div className="col-span-12 space-y-6 xl:col-span-7">
-
-                    <div className="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03] mb-4">
+                    <AdCreative />
+                    {/* <div className="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03] mb-4">
                         <div className="px-6 py-5"><h3 className="text-base font-medium text-gray-800 dark:text-white/90">Ad Creative</h3></div>
                         <div className="p-4 border-t border-gray-100 dark:border-gray-800 sm:p-6">
                             <div className="mb-3">
@@ -91,7 +92,7 @@ const AdCenter = () => {
 
                         </div>
 
-                    </div>
+                    </div> */}
                     <div className="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03] mb-4">
                         <Audience onChange={setAudienceData} />
 
