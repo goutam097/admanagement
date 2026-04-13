@@ -8,6 +8,7 @@ import Advertise from "../pages/advertise/Advertise";
 import PrivateRoute from "./PrivateRoute";
 import MainLayout from "../components/MainLayout";
 import { PaymentHistory } from "../pages/paymentHistory/PaymentHistory";
+import CampaignDetails from "../pages/campaignDetails/CampaignDetails";
 
 const AdsRoutes = () => {
   return (
@@ -25,7 +26,7 @@ const AdsRoutes = () => {
           <Route path="createAd" element={<AdCenter />} />
           <Route path="advertise" element={<Advertise />} />
           <Route path="payment-history" element={<PaymentHistory />} />
-
+          <Route path="campaign-details" element={<CampaignDetails />} />
         </Route>
       </Route>
 
