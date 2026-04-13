@@ -17,6 +17,7 @@ import AdForm from "../pages/adForm/AdForm";
 import CampaignDetails from "../pages/campaignDetails/CampaignDetails";
 import AddMoneyWallet from "../pages/addMoneyWalet/addMoneyWallet";
 
+
 const AdsRoutes = () => {
   return (
     <Routes>
@@ -40,7 +41,8 @@ const AdsRoutes = () => {
           <Route path="adset/:id?" element={<AdSetForm />} />
           <Route path="ad/:id?" element={<AdForm />} />
           <Route path="campaign-details" element={<CampaignDetails />} />
-          w<Route path="add-Money-wallet" element={<AddMoneyWallet />} />
+          <Route path="add-Money-wallet" element={<AddMoneyWallet />} />
+          
 
         </Route>
       </Route>
