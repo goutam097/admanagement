@@ -3,16 +3,17 @@ import Audience from "../../components/audience/Audience"
 import Duration from "../../components/duration/Duration"
 import { campaignAPI } from "../../apis/campaign";
 import { toast } from "react-toastify";
+import { adSetCreateAPI } from "../../apis/adSet";
+import { useNavigate } from "react-router-dom";
 
 const AdSetForm = () => {
+  const navigate = useNavigate()
   const [loading, setLoading] = useState(false);
   const [campaignList, setCampaignList] = useState([])
   const [selectedCampaign, setSelectedCampaign] = useState("")
   const [adSetName, setAdSetName] = useState("")
   const [audienceData, setAudienceData] = useState<any>({});
   const [durationData, setDurationData] = useState<any>({});
-  console.log(campaignList, 'durationData');
-  console.log(selectedCampaign, 'selectedCampaign');
 
   const fetchData = async () => {
     try {
@@ -30,7 +31,7 @@ const AdSetForm = () => {
     fetchData()
   }, [])
 
-  const handleSubmit = () => {
+  const handleSubmit = async() => {
     if(!selectedCampaign) return toast.error('campain is required')
     if(!adSetName) return toast.error('campain is required')
     const payload = {
@@ -95,8 +96,9 @@ const AdSetForm = () => {
         behavior: [],
       },
     };
-
-    console.log("FINAL PAYLOAD:", payload);
+    const result = await adSetCreateAPI(payload)
+    toast.success("Ad set created successfully")
+    navigate('/ad')
   };
 
   return (

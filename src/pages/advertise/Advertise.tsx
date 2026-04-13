@@ -52,7 +52,6 @@ const Advertise = () => {
         response = await adAPI();
       }
       setAdvertiseData(response)
-      console.log(response, `${tab} data`);
     } catch (err: any) {
       console.error(err);
     } finally {
@@ -95,7 +94,6 @@ const Advertise = () => {
   const handleSelect = (id: string) => {
     setSelectedId((prev) => {
       const updated = prev === id ? null : id;
-      console.log("Updated:", updated);
       return updated;
     });
   };

@@ -1,7 +1,14 @@
 import { getURL } from "../utils/apiConstants";
 import { _delete, _get, _getC, _post, _postC, _put } from "../utils/axiosInstance";
 
-
+type AdSetPayload = {
+  campaign_id: string;
+  name: string;
+  budget: number;
+  schedule_start: string | null;
+  schedule_end: string | null;
+  targeting: any;
+};
 
 export const adSetAPI = async (): Promise<any> => {
     try {
@@ -71,7 +78,7 @@ export const adSetDeleteAPI = async (
 };
 
 export const adSetCreateAPI = async (
-  data: { name: string; objective: string }
+  data: AdSetPayload
 ): Promise<any> => {
   try {
     const url = getURL("ADSET.CREATE"); 
@@ -82,7 +89,7 @@ export const adSetCreateAPI = async (
       throw new Error(response?.err || "Create failed");
     }
 
-    if (response.status === 200) {
+    if (response.status === 201) {
       return response.data.data;
     }
 
