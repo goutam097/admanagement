@@ -13,8 +13,8 @@ const WalletAndBilling = () => {
                 <span className="text-sm text-gray-500 dark:text-gray-400">Customers</span>
               </div>
               <div className="flex gap-3">
-                <button class="inline-flex items-center justify-center gap-2 rounded-lg transition px-4 py-3 text-sm bg-brand-500 text-white shadow-theme-xs hover:bg-brand-600 disabled:bg-brand-300">Add money to wallet</button>
-                <button class="inline-flex items-center justify-center gap-2 rounded-lg transition px-4 py-3 text-sm bg-brand-500 text-white shadow-theme-xs hover:bg-brand-600 disabled:bg-brand-300">View KYC</button>
+                <button class="inline-flex items-center justify-center gap-2 rounded-lg transition px-4 py-3 text-sm bg-brand-500 text-white shadow-theme-xs hover:bg-brand-600 disabled:bg-brand-300"><i className="fa-solid fa-plus"></i> Add money to wallet</button>
+                <button class="inline-flex items-center justify-center gap-2 rounded-lg transition px-4 py-3 text-sm bg-brand-500 text-white shadow-theme-xs hover:bg-brand-600 disabled:bg-brand-300"><i className="fa-regular fa-eye"></i> View KYC</button>
               </div>
             </div>
           </div>
