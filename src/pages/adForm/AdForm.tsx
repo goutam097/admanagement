@@ -10,6 +10,7 @@ const AdForm = () => {
   const [adSetName, setAdSetName] = useState("")
   const [audienceData, setAudienceData] = useState<any>({});
   const [durationData, setDurationData] = useState<any>({});
+   const [placements, setPlacements] = useState<string[]>([]);
 
   const fetchData = async () => {
     try {
@@ -26,6 +27,18 @@ const AdForm = () => {
   useEffect(() => {
     fetchData()
   }, [])
+
+
+  const [adCreative, setAdCreative] = useState<any>({
+    headline: "",
+    description: "",
+    ad_format: "image",
+    button: "",
+    website_url: ""
+  });
+
+  console.log(placements,'-------');
+  
 
 
 
@@ -59,12 +72,12 @@ const AdForm = () => {
 
 
           <div className="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03] mb-4">
-            <AdCreative />
+            <AdCreative adCreative={adCreative} setAdCreative={setAdCreative}/>
 
           </div>
 
           <div className="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03] mb-4">
-            <Placement />
+            <Placement onChange={setPlacements} />
           </div>
 
           <div className="w-full h-px my-6 bg-gray-200 dark:bg-gray-800"></div>
