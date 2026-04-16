@@ -1,89 +1,259 @@
+import { useEffect, useState } from "react";
 
-const AdCreative = () => {
-    return (
-        <>
-            <div className="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03] mb-4">
-                <div className="px-6 py-5"><h3 className="text-base font-medium text-gray-800 dark:text-white/90">Ad Creative</h3></div>
-                <div className="p-4 border-t border-gray-100 dark:border-gray-800 sm:p-6">
-                    <div className="mb-3">
-                        <div>
-                            <label className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">How do you want your ad to look?
-                            </label>
-                            {/* <div className="relative">
-                                <input id="" className=" h-11 w-full rounded-lg border appearance-none px-4 py-2.5 text-sm shadow-theme-xs placeholder:text-gray-400 focus:outline-hidden focus:ring-3  dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30  bg-transparent text-gray-800 border-gray-300 focus:border-brand-300 focus:ring-brand-500/20 dark:border-gray-700 dark:text-white/90  dark:focus:border-brand-800" type="text" />
-                            </div> */}
-                        </div>
-                    </div>
-
-                    <div className="mb-3">
-                        <div>
-                            <label className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">Headline
-                            </label>
-                            <div className="relative">
-                                <input id="" className=" h-11 w-full rounded-lg border appearance-none px-4 py-2.5 text-sm shadow-theme-xs placeholder:text-gray-400 focus:outline-hidden focus:ring-3  dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30  bg-transparent text-gray-800 border-gray-300 focus:border-brand-300 focus:ring-brand-500/20 dark:border-gray-700 dark:text-white/90  dark:focus:border-brand-800" type="text" /></div></div>
-                    </div>
-
-                    <div className="mb-3">
-                        <div>
-                            <label className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">Description
-                            </label>
-                            <div className="relative">
-                            <textarea placeholder="Enter your message" rows={3} className="w-full rounded-lg border px-4 py-2.5 text-sm shadow-theme-xs focus:outline-hidden   bg-transparent text-gray-900 dark:text-gray-300 text-gray-900 border-gray-300 focus:border-brand-300 focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:focus:border-brand-800"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="mb-3">
-                        <div>
-                            <label className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">Ad Format <span>*</span>
-                            </label>
-                            <div className="relative">
-                                <input id="" className=" h-11 w-full rounded-lg border appearance-none px-4 py-2.5 text-sm shadow-theme-xs placeholder:text-gray-400 focus:outline-hidden focus:ring-3  dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30  bg-transparent text-gray-800 border-gray-300 focus:border-brand-300 focus:ring-brand-500/20 dark:border-gray-700 dark:text-white/90  dark:focus:border-brand-800" type="text" /></div></div>
-                    </div>
-                    <div className="mb-3">
-                        <label> Media 0/5 upload multiple images or videos (2-5 files)</label>
-                        <div className="flex">
-                            <div className="transition border border-gray-300 border-dashed cursor-pointer dark:hover:border-brand-500 dark:border-gray-700 rounded-xl hover:border-brand-500 py-5 upload-box
-      ">                                    <input type="file" />
-                                <div className="dz-message flex flex-col items-center m-0!">
-                                    <div className="mb-[22px] flex justify-center">
-                                        <div className="flex h-[68px] w-[68px]  items-center justify-center rounded-full bg-gray-200 text-gray-700 dark:bg-gray-800 dark:text-gray-400">
-                                            <svg className="fill-current" width="29" height="28" viewBox="0 0 29 28" xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M14.5019 3.91699C14.2852 3.91699 14.0899 4.00891 13.953 4.15589L8.57363 9.53186C8.28065 9.82466 8.2805 10.2995 8.5733 10.5925C8.8661 10.8855 9.34097 10.8857 9.63396 10.5929L13.7519 6.47752V18.667C13.7519 19.0812 14.0877 19.417 14.5019 19.417C14.9161 19.417 15.2519 19.0812 15.2519 18.667V6.48234L19.3653 10.5929C19.6583 10.8857 20.1332 10.8855 20.426 10.5925C20.7188 10.2995 20.7186 9.82463 20.4256 9.53184L15.0838 4.19378C14.9463 4.02488 14.7367 3.91699 14.5019 3.91699ZM5.91626 18.667C5.91626 18.2528 5.58047 17.917 5.16626 17.917C4.75205 17.917 4.41626 18.2528 4.41626 18.667V21.8337C4.41626 23.0763 5.42362 24.0837 6.66626 24.0837H22.3339C23.5766 24.0837 24.5839 23.0763 24.5839 21.8337V18.667C24.5839 18.2528 24.2482 17.917 23.8339 17.917C23.4197 17.917 23.0839 18.2528 23.0839 18.667V21.8337C23.0839 22.2479 22.7482 22.5837 22.3339 22.5837H6.66626C6.25205 22.5837 5.91626 22.2479 5.91626 21.8337V18.667Z"></path>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <span className=" text-center mb-5 block w-full max-w-[290px] text-sm text-gray-700 dark:text-gray-400">Drag and drop your PNG, JPG, WebP, SVG images here or browse</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="mb-3">
-                        <div><label className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">Button <span>*</span>
-                        </label>
-                            <div className="relative">
-                                <select className="h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 pr-11 text-sm shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800 text-gray-400 dark:text-gray-400 dark:bg-dark-900">
-                                    <option value="" className="text-gray-700 dark:bg-gray-900 dark:text-gray-400">Select Option</option>
-                                    <option value="marketing" className="text-gray-700 dark:bg-gray-900 dark:text-gray-400">Marketing</option>
-                                    <option value="template" className="text-gray-700 dark:bg-gray-900 dark:text-gray-400">Template</option>
-                                    <option value="development" className="text-gray-700 dark:bg-gray-900 dark:text-gray-400">Development</option>
-                                </select>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="mb-3">
-                        <div><label className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">Website URL
-                        </label>
-                            <div className="relative">
-                                <input id="" className=" h-11 w-full rounded-lg border appearance-none px-4 py-2.5 text-sm shadow-theme-xs placeholder:text-gray-400 focus:outline-hidden focus:ring-3  dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30  bg-transparent text-gray-800 border-gray-300 focus:border-brand-300 focus:ring-brand-500/20 dark:border-gray-700 dark:text-white/90  dark:focus:border-brand-800" type="text" /></div></div>
-                    </div>
-
-                </div>
-
-            </div>
-        </>
-    )
+interface AdCreativeType {
+  headline: string;
+  description: string;
+  ad_format: string;
+  button: string;
+  website_url: string;
 }
 
-export default AdCreative
+interface AdCreativeProps {
+  adCreative: AdCreativeType;
+  setAdCreative: React.Dispatch<React.SetStateAction<AdCreativeType>>;
+}
+
+const AdCreative: React.FC<AdCreativeProps> = ({
+  adCreative,
+  setAdCreative,
+}) => {
+  const [media, setMedia] = useState<File[]>([]);
+
+  const buttonOptions = [
+    "apply Now",
+    "learn More",
+    "sign Up",
+    "contact Us",
+    "shop Now",
+    "donate Now",
+  ];
+
+  const adFormat = ["image", "video", "carousel", "collection"];
+
+  // ✅ reset media on format change
+  useEffect(() => {
+    setMedia([]);
+  }, [adCreative.ad_format]);
+
+  // ✅ handle upload
+  const handleMedia = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (!files) return;
+
+    const fileArray = Array.from(files);
+    const format = adCreative.ad_format;
+
+    const MAX_SIZE = 50 * 1024 * 1024;
+
+    const isValid = fileArray.every((file) => file.size <= MAX_SIZE);
+    if (!isValid) {
+      alert("Max file size is 50MB");
+      return;
+    }
+
+    if (format === "image" || format === "video") {
+      if (fileArray.length !== 1) {
+        alert("Only 1 file allowed");
+        return;
+      }
+      setMedia(fileArray);
+    } else {
+      if (fileArray.length < 2 || fileArray.length > 5) {
+        alert("Upload 2–5 files");
+        return;
+      }
+      setMedia(fileArray);
+    }
+  };
+
+  // ✅ remove file
+  const removeFile = (index: number) => {
+    setMedia((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  return (
+    <>
+      <div className="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03] mb-4">
+        <div className="px-6 py-5">
+          <h3 className="text-base font-medium text-gray-800 dark:text-white/90">
+            Ad Creative
+          </h3>
+        </div>
+
+        <div className="p-4 border-t border-gray-100 dark:border-gray-800 sm:p-6">
+
+          {/* Headline */}
+          <div className="mb-3">
+            <label className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+              Headline
+            </label>
+            <input
+              value={adCreative?.headline}
+              onChange={(e) =>
+                setAdCreative({ ...adCreative, headline: e.target.value })
+              }
+              className="h-11 w-full rounded-lg border px-4 py-2.5 text-sm"
+              type="text"
+            />
+          </div>
+
+          {/* Description */}
+          <div className="mb-3">
+            <label className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+              Description
+            </label>
+            <textarea
+              value={adCreative?.description}
+              onChange={(e) =>
+                setAdCreative({ ...adCreative, description: e.target.value })
+              }
+              rows={3}
+              className="w-full rounded-lg border px-4 py-2.5 text-sm"
+            />
+          </div>
+
+          {/* Ad Format */}
+          <div className="mb-3">
+            <label className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+              Ad Format
+            </label>
+            <select
+              value={adCreative?.ad_format}
+              onChange={(e) =>
+                setAdCreative({ ...adCreative, ad_format: e.target.value })
+              }
+              className="h-11 w-full rounded-lg border px-4 py-2.5 text-sm"
+            >
+              {adFormat.map((item, index) => (
+                <option key={index} value={item}>
+                  {item}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Media */}
+          <div className="mb-3">
+            <label>
+              Media {media.length}/
+                {adCreative.ad_format === "image" && 'Media 0/1- Upload an image. Supported formats: JPG, PNG, GIF (Max 50MB)'}
+                {adCreative.ad_format === "video" && 'Media 0/1- Upload a video or provide a video URL. Supported formats: MP4, WebM, MOV (Max 50MB)'}
+                {(adCreative.ad_format === "carousel" || adCreative.ad_format === "collection")  && 'Media 0/5- Upload multiple images or videos (2-5 files)'}
+            </label>
+
+            <div className="flex gap-4">
+              
+              {/* Upload Box (UNCHANGED DESIGN) */}
+              <div className="transition border border-gray-300 border-dashed cursor-pointer dark:hover:border-brand-500 dark:border-gray-700 rounded-xl hover:border-brand-500 py-5 upload-box">
+                <input
+                  type="file"
+                  multiple={
+                    adCreative.ad_format === "carousel" ||
+                    adCreative.ad_format === "collection"
+                  }
+                  accept={
+                    adCreative.ad_format === "video"
+                      ? "video/mp4,video/webm,video/mov"
+                      : "image/jpeg,image/png,image/gif,video/mp4,video/webm,video/mov"
+                  }
+                  onChange={handleMedia}
+                />
+
+                <div className="dz-message flex flex-col items-center m-0!">
+                  <div className="mb-[22px] flex justify-center">
+                    <div className="flex h-[68px] w-[68px] items-center justify-center rounded-full bg-gray-200">
+                      <i className="fa fa-plus"></i>
+                    </div>
+                  </div>
+
+                  <span className="text-center text-sm">
+                    Add Media
+                  </span>
+                </div>
+              </div>
+
+              {/* ✅ PREVIEW SIDE */}
+              {media.length > 0 && (
+                <div className="flex flex-wrap gap-3">
+                  {media.map((file, index) => {
+                    const url = URL.createObjectURL(file);
+                    const isImage = file.type.startsWith("image");
+                    const isVideo = file.type.startsWith("video");
+
+                    return (
+                      <div
+                        key={index}
+                        className="relative border rounded-lg p-2 w-[120px]"
+                      >
+                        {/* remove */}
+                        <button
+                          onClick={() => removeFile(index)}
+                          className="absolute top-1 right-1 bg-red-500 text-white text-xs px-1 rounded"
+                        >
+                          ✕
+                        </button>
+
+                        {/* preview */}
+                        {isImage && (
+                          <img
+                            src={url}
+                            className="w-full h-[80px] object-cover rounded"
+                          />
+                        )}
+
+                        {isVideo && (
+                          <video
+                            src={url}
+                            className="w-full h-[80px] object-cover rounded"
+                          />
+                        )}
+
+                        <p className="text-xs truncate mt-1">
+                          {file.name}
+                        </p>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Button */}
+          <div className="mb-3">
+            <select
+              value={adCreative?.button}
+              onChange={(e) =>
+                setAdCreative({ ...adCreative, button: e.target.value })
+              }
+              className="h-11 w-full rounded-lg border px-4 py-2.5 text-sm"
+            >
+              {buttonOptions.map((item, index) => (
+                <option key={index} value={item}>
+                  {item}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* URL */}
+          <div className="mb-3">
+            <input
+              value={adCreative.website_url}
+              onChange={(e) =>
+                setAdCreative({
+                  ...adCreative,
+                  website_url: e.target.value,
+                })
+              }
+              className="h-11 w-full rounded-lg border px-4 py-2.5 text-sm"
+              type="text"
+            />
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default AdCreative;

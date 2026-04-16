@@ -1,68 +1,66 @@
+import { useEffect, useState } from "react";
 
-const Placement = () => {
-    return (
-        <>
-            <p>Choose where you want to show your ad.The more placements you select, the more opportunities you'll have to reach your target audience</p>
+const wallOptions = [
+  { label: "General wall", value: "general_wall" },
+  { label: "Fan wall", value: "fan_wall" },
+  { label: "Favourite wall", value: "favourite_wall" },
+  { label: "Prayer wall", value: "prayer_wall" },
+  { label: "Physical wall", value: "physical_church_wall" },
+  { label: "Virtual church wall", value: "virtual_church_wall" },
+];
+const Placement = ({ onChange }: { onChange: (val: string[]) => void }) => {
+  const [selectedWalls, setSelectedWalls] = useState<string[]>([
+    "general_wall",
+  ]);
 
+  useEffect(() => {
+    onChange(["general_wall"]);
+  }, []);
 
-            <div className="mb-3">
-                <div className="rounded-2xl border border-gray-100 bg-gray-50 px-6 py-6 dark:border-gray-100 ">
-                    <label className="relative flex cursor-pointer  select-none items-center gap-3 text-sm font-medium text-gray-700 dark:text-gray-400 ">
-                        <input id="check1" className="" type="checkbox" />General wall</label>
-                    <div>
+  const handleChange = (value: string) => {
+    setSelectedWalls((prev) => {
+      let updated;
 
-                        <small>Show your ad on general wall placement</small>
-                    </div>
-                </div>
-            </div>
-            <div className="mb-3">
-                <div className="rounded-2xl border border-gray-100 bg-gray-50 px-6 py-6 dark:border-gray-100 ">
-                    <label className="relative flex cursor-pointer  select-none items-center gap-3 text-sm font-medium text-gray-700 dark:text-gray-400 ">
-                        <input id="check2" className="" type="checkbox" />Fan wall</label>
-                    <div>
+      if (prev.includes(value)) {
+        if (prev.length === 1) return prev;
 
-                        <small>Show your ad on general wall placement</small>
-                    </div>
-                </div>
-            </div>
-            <div className="mb-3">
-                <div className="rounded-2xl border border-gray-100 bg-gray-50 px-6 py-6 dark:border-gray-100 ">
-                    <label className="relative flex cursor-pointer  select-none items-center gap-3 text-sm font-medium text-gray-700 dark:text-gray-400 ">
-                        <input id="check3" className="" type="checkbox" />Favourite wall</label>
-                    <div>
-                        <small>Show your ad on general wall placement</small>
-                    </div>
-                </div>
-            </div>
-            <div className="mb-3">
-                <div className="rounded-2xl border border-gray-100 bg-gray-50 px-6 py-6 dark:border-gray-100 ">
-                    <label className="relative flex cursor-pointer  select-none items-center gap-3 text-sm font-medium text-gray-700 dark:text-gray-400 ">
-                        <input id="check4" className="" type="checkbox" />Prayer wall</label>
-                    <div>
-                        <small>Show your ad on general wall placement</small>
-                    </div>
-                </div>
-            </div>
-            <div className="mb-3">
-                <div className="rounded-2xl border border-gray-100 bg-gray-50 px-6 py-6 dark:border-gray-100 ">
-                    <label className="relative flex cursor-pointer  select-none items-center gap-3 text-sm font-medium text-gray-700 dark:text-gray-400 ">
-                        <input id="check5" className="" type="checkbox" />Physical wall</label>
-                    <div>
-                        <small>Show your ad on general wall placement</small>
-                    </div>
-                </div>
-            </div>
-            <div className="mb-3">
-                <div className="rounded-2xl border border-gray-100 bg-gray-50 px-6 py-6 dark:border-gray-100 ">
-                    <label className="relative flex cursor-pointer  select-none items-center gap-3 text-sm font-medium text-gray-700 dark:text-gray-400 ">
-                        <input id="check6" className="" type="checkbox" />Virtual church wall</label>
-                    <div>
-                        <small>Show your ad on general wall placement</small>
-                    </div>
-                </div>
-            </div>
-        </>
-    )
-}
+        updated = prev.filter((item) => item !== value);
+      } else {
+        updated = [...prev, value];
+      }
 
-export default Placement
+      onChange(updated);
+      return updated;
+    });
+  };
+
+  return (
+    <>
+      <p>
+        Choose where you want to show your ad.The more placements you select,
+        the more opportunities you'll have to reach your target audience
+      </p>
+      {wallOptions.map((item) => (
+        <div className="mb-3" key={item.value}>
+          <div className="rounded-2xl border border-gray-100 bg-gray-50 px-6 py-6">
+            <label className="flex cursor-pointer items-center gap-3 text-sm font-medium text-gray-700">
+              <input
+                type="checkbox"
+                value={item.value}
+                checked={selectedWalls.includes(item.value)}
+                onChange={() => handleChange(item.value)}
+              />
+              {item.label}
+            </label>
+            <div>
+              <small>
+                Show your ad on {item.label.toLowerCase()} placement
+              </small>
+            </div>
+          </div>
+        </div>
+      ))}
+    </>
+  );
+};
+export default Placement;
