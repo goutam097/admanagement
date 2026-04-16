@@ -33,6 +33,7 @@ const AdForm = () => {
     headline: "",
     description: "",
     ad_format: "image",
+    media:"",
     button: "",
     website_url: ""
   });

@@ -32,8 +32,8 @@ const AdSetForm = () => {
   }, [])
 
   const handleSubmit = async() => {
-    if(!selectedCampaign) return toast.error('campain is required')
-    if(!adSetName) return toast.error('campain is required')
+    if(!selectedCampaign) return toast.error('Campain is required')
+    if(!adSetName) return toast.error('Ad set name is required')
     const payload = {
       campaign_id: selectedCampaign,
       name: adSetName,

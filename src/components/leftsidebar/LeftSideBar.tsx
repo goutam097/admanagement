@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import logo from "../../assets/images/logo.svg"
 import logoicon from "../../assets/images/logo-icon.svg"
 
@@ -8,7 +8,8 @@ type SidebarProps = {
 
 const LeftSideBar = ({ collapsed }: SidebarProps) => {
     const navigate = useNavigate()
-    
+    const location = useLocation();
+
     return (
         <>
             <aside className={`
@@ -18,29 +19,29 @@ const LeftSideBar = ({ collapsed }: SidebarProps) => {
 
                 <div className="py-8  justify-start flex md:justify-center">
                     <a href="/" data-discover="true">
-                    <img className={`
+                        <img className={`
     cursor-pointer transition-all duration-300
     ${collapsed ? "hidden" : ""}
   `} alt="Logo" width="150" height="40" src="https://react-demo.tailadmin.com/images/logo/logo.svg" />
-                    <img className={`
+                        <img className={`
     transition-all duration-300
     ${collapsed ? "" : "hidden"}
   `} alt="Logo" width="32" height="32" src={logoicon} /></a>
-                    </div>
+                </div>
 
                 <div className="flex flex-col overflow-y-auto duration-300 ease-linear no-scrollbar">
                     <nav className="mb-3">
                         <div className="flex flex-col gap-4">
-                            
-                            <div>
-                                <h2 className="mb-4 text-xs uppercase flex leading-[20px] text-gray-400 justify-start">Menu 
 
-                                   
+                            <div>
+                                <h2 className="mb-4 text-xs uppercase flex leading-[20px] text-gray-400 justify-start">Menu
+
+
 
                                 </h2>
                                 <ul className="flex flex-col gap-1">
                                     <li onClick={() => { navigate('/') }}>
-                                        <a className="menu-item group menu-item-active" data-discover="true">
+                                        <a className={`menu-item group ${location.pathname === "/" ? "menu-item-active" : "menu-item-inactive"}`}>
                                             <span className="menu-item-icon-size menu-item-icon-inactive">
                                                 <i className="fa-regular fa-grid-2"></i>
                                             </span>
@@ -48,7 +49,7 @@ const LeftSideBar = ({ collapsed }: SidebarProps) => {
                                         </a>
                                     </li>
                                     <li onClick={() => { navigate('/advertise') }}>
-                                        <a className="menu-item group menu-item-inactive" data-discover="true">
+                                        <a className={`menu-item group ${location.pathname === "/advertise" ? "menu-item-active" : "menu-item-inactive"}`}>
                                             <span className="menu-item-icon-size menu-item-icon-inactive">
                                                 <i className="fa-regular fa-rectangle-ad"></i>
                                             </span>
@@ -56,7 +57,7 @@ const LeftSideBar = ({ collapsed }: SidebarProps) => {
                                         </a>
                                     </li>
                                     <li onClick={() => { navigate('/wallet') }}>
-                                        <a className="menu-item group menu-item-inactive" data-discover="true">
+                                        <a className={`menu-item group ${location.pathname === "/wallet" ? "menu-item-active" : "menu-item-inactive"}`}>
                                             <span className="menu-item-icon-size menu-item-icon-inactive">
                                                 <i className="fa-regular fa-wallet"></i>
                                             </span>
@@ -64,7 +65,7 @@ const LeftSideBar = ({ collapsed }: SidebarProps) => {
                                         </a>
                                     </li>
                                     <li onClick={() => { navigate('/createAd') }}>
-                                        <a className="menu-item group menu-item-inactive" data-discover="true">
+                                        <a className={`menu-item group ${location.pathname === "/createAd" ? "menu-item-active" : "menu-item-inactive"}`}>
                                             <span className="menu-item-icon-size menu-item-icon-inactive">
                                                 <i className="fa-regular fa-calendar-circle-plus"></i>
                                             </span>

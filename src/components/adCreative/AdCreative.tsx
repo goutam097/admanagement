@@ -20,12 +20,12 @@ const AdCreative: React.FC<AdCreativeProps> = ({
   const [media, setMedia] = useState<File[]>([]);
 
   const buttonOptions = [
-    "apply Now",
-    "learn More",
-    "sign Up",
-    "contact Us",
-    "shop Now",
-    "donate Now",
+    { label: "Apply now", value: "apply_now" },
+    { label: "Learn more", value: "learn_more" },
+    { label: "Sign up", value: "sign_up" },
+    { label: "Contact Us", value: "contact_us" },
+    { label: "Shop Now", value: "shop_now" },
+    { label: "Donate Now", value: "donate_now" },
   ];
 
   const adFormat = ["image", "video", "carousel", "collection"];
@@ -33,7 +33,7 @@ const AdCreative: React.FC<AdCreativeProps> = ({
   // ✅ reset media on format change
   useEffect(() => {
     setMedia([]);
-  }, [adCreative.ad_format]);
+  }, [adCreative?.ad_format]);
 
   // ✅ handle upload
   const handleMedia = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -136,13 +136,13 @@ const AdCreative: React.FC<AdCreativeProps> = ({
           <div className="mb-3">
             <label>
               Media {media.length}/
-                {adCreative.ad_format === "image" && 'Media 0/1- Upload an image. Supported formats: JPG, PNG, GIF (Max 50MB)'}
-                {adCreative.ad_format === "video" && 'Media 0/1- Upload a video or provide a video URL. Supported formats: MP4, WebM, MOV (Max 50MB)'}
-                {(adCreative.ad_format === "carousel" || adCreative.ad_format === "collection")  && 'Media 0/5- Upload multiple images or videos (2-5 files)'}
+              {adCreative.ad_format === "image" && 'Media 0/1- Upload an image. Supported formats: JPG, PNG, GIF (Max 50MB)'}
+              {adCreative.ad_format === "video" && 'Media 0/1- Upload a video or provide a video URL. Supported formats: MP4, WebM, MOV (Max 50MB)'}
+              {(adCreative.ad_format === "carousel" || adCreative.ad_format === "collection") && 'Media 0/5- Upload multiple images or videos (2-5 files)'}
             </label>
 
             <div className="flex gap-4">
-              
+
               {/* Upload Box (UNCHANGED DESIGN) */}
               <div className="transition border border-gray-300 border-dashed cursor-pointer dark:hover:border-brand-500 dark:border-gray-700 rounded-xl hover:border-brand-500 py-5 upload-box">
                 <input
@@ -229,8 +229,8 @@ const AdCreative: React.FC<AdCreativeProps> = ({
               className="h-11 w-full rounded-lg border px-4 py-2.5 text-sm"
             >
               {buttonOptions.map((item, index) => (
-                <option key={index} value={item}>
-                  {item}
+                <option key={index} value={item.value}>
+                  {item.label}
                 </option>
               ))}
             </select>
@@ -240,6 +240,7 @@ const AdCreative: React.FC<AdCreativeProps> = ({
           <div className="mb-3">
             <input
               value={adCreative.website_url}
+              placeholder="https://example.com/your-page"
               onChange={(e) =>
                 setAdCreative({
                   ...adCreative,
