@@ -1,12 +1,31 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import user from "../../assets/images/owner.png"
 type HeaderProps = {
-  setSidebarCollapsed: React.Dispatch<React.SetStateAction<boolean>>;
+    setSidebarCollapsed: React.Dispatch<React.SetStateAction<boolean>>;
 };
 const Header = ({ setSidebarCollapsed }: HeaderProps) => {
 
-    const [show, setShow] =  useState(false);
-    
+    const [show, setShow] = useState(false);
+    const [open, setOpen] = useState(false);
+    const dropdownRef = useRef<HTMLDivElement | null>(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (
+                dropdownRef.current &&
+                !dropdownRef.current.contains(event.target as Node)
+            ) {
+                setOpen(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
     return (
         <header className="sticky top-0 flex w-full bg-white border-gray-200 z-99999 dark:border-gray-800 dark:bg-gray-900 xl:border-b">
             <div className="flex flex-col items-center justify-between grow xl:flex-row xl:px-6">
@@ -36,13 +55,69 @@ const Header = ({ setSidebarCollapsed }: HeaderProps) => {
                             </button>
                         </div>
                     </div>
-                    <div className="relative">
-                        <button className="flex items-center text-gray-700 dropdown-toggle dark:text-gray-400">
+                    <div className="relative" ref={dropdownRef}>
+                        <button className="flex items-center text-gray-700 dropdown-toggle dark:text-gray-400" onClick={() => setOpen(!open)}>
                             <span className="mr-3 overflow-hidden rounded-full h-11 w-11"><img alt="asd" src={user} /></span><span className="block mr-1 font-medium text-theme-sm">Musharof</span>
-                            <svg className="stroke-gray-500 dark:stroke-gray-400 transition-transform duration-200 " width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M4.3125 8.65625L9 13.3437L13.6875 8.65625" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                            </svg>
+                            <i className="fa-regular fa-angle-down"></i>
                         </button>
+                        {open && (
+                            <div
+                                x-show="dropdownOpen"
+                                className="shadow-theme-lg dark:bg-gray-dark absolute right-0 mt-[17px] flex w-[260px] flex-col rounded-2xl border border-gray-200 bg-white p-3 dark:border-gray-800"
+                            >
+                                <div>
+                                    <span
+                                        className="text-theme-sm block font-medium text-gray-700 dark:text-gray-400"
+                                    >
+                                        Musharof Chowdhury
+                                    </span>
+                                    <span
+                                        className="text-theme-xs mt-0.5 block text-gray-500 dark:text-gray-400"
+                                    >
+                                        <a href="cdn-cgi/l/email-protection.html" className="__cf_email__" data-cfemail="1260737c767d7f6761776052627b7f787d3c717d7f">[email&#160;protected]</a>
+                                    </span>
+                                </div>
+
+                                <ul
+                                    className="flex flex-col gap-1 border-b border-gray-200 pt-4 pb-3 dark:border-gray-800"
+                                >
+                                    <li>
+                                        <a
+                                            href="profile.html"
+                                            className="group text-theme-sm flex items-center gap-3 rounded-lg px-3 py-2 font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
+                                        >
+                                            <i className="fa-regular fa-circle-user"></i>
+                                            Edit profile
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="chat.html"
+                                            className="group text-theme-sm flex items-center gap-3 rounded-lg px-3 py-2 font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
+                                        >
+                                            <i className="fa-regular fa-gear"></i>
+                                            Account settings
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="profile.html"
+                                            className="group text-theme-sm flex items-center gap-3 rounded-lg px-3 py-2 font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
+                                        >
+                                            <i className="fa-regular fa-circle-info"></i>
+                                            Support
+                                        </a>
+                                    </li>
+                                </ul>
+                                <button
+                                    className="group text-theme-sm mt-3 flex items-center gap-3 rounded-lg px-3 py-2 font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
+                                >
+                                    <i className="fa-regular fa-arrow-right-from-bracket"></i>
+
+                                    Sign out
+                                </button>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
